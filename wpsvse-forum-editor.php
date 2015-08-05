@@ -19,7 +19,15 @@ if ( !is_admin() ) {
     return $args;
 	}
 	add_filter( 'bbp_after_get_the_content_parse_args', 'wpsvse_bbp_enable_visual_editor' );
+	
+	// Set initial height
+	function wptiny($initArray){
+			$initArray['height'] = '240px';
+			return $initArray;
+	}
+	add_filter('tiny_mce_before_init', 'wptiny');
 }
+
 
 /* Set allowed tags */
 function wpsvse_kses_allowed_tags($input){
