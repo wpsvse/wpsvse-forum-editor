@@ -18,8 +18,11 @@
 												minHeight: 405,
 												name: 'codeblock',
 										}],
+										
 										onsubmit: function( e ) {
-												editor.insertContent( '<pre>' + e.data.codeblock + '</pre>');
+												var codeblock = e.data.codeblock.replace(/\r\n/gmi, '\n');
+												codeblock =  tinymce.html.Entities.encodeAllRaw(codeblock);
+												editor.insertContent( '<pre>' + codeblock + '</pre><p></p>');
 										}
 								});
 						}
